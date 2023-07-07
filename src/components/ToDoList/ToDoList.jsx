@@ -1,6 +1,10 @@
 import { Grid, GridItem, Text, Todo } from "components";
+import { useSelector } from "react-redux";
+import { selectTodosList } from "redux/selectors";
+
 export const ToDoList = () => {
-  const todos = {}
+  const todos = useSelector(selectTodosList);
+
   return (
     <>
       {todos.length === 0 && (
@@ -14,7 +18,7 @@ export const ToDoList = () => {
                 id={todo.id}
                 text={todo.text}
                 counter={index + 1}
-                onClick={this.deleteTodo}
+                // onClick={this.deleteTodo}
               />
             </GridItem>
           ))}
