@@ -15,6 +15,18 @@ const todosSlice = createSlice({
     deleteTodo(state, { payload: id }) {
       state.todos = state.todos.filter(todo => todo.id !== id);
     },
+    editToDo(state, { payload: { id, query } }) {
+      state.todos = state.todos.map(todo => {
+        if (todo.id === id) {
+          return {
+            ...todo,
+            text: query,
+          };
+        }
+        return todo;
+      });
+    },
+
     incrementLikes(state, { payload: id }) {
       state.todos = state.todos.map(todo => {
         if (todo.id === id) {
@@ -42,6 +54,6 @@ const todosSlice = createSlice({
   },
 });
 
-export const { addTodo, deleteTodo, incrementLikes, decrementLikes } =
+export const { addTodo, deleteTodo, incrementLikes, decrementLikes, editToDo } =
   todosSlice.actions;
 export default todosSlice.reducer;
