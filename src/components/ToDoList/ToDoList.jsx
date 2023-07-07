@@ -12,12 +12,15 @@ export const ToDoList = () => {
       )}
       <Grid>
         {todos.length > 0 &&
-          todos.map((todo, index) => (
-            <GridItem key={todo.id}>
+
+          todos.map(({id, text, likes}, index) => (
+            
+            <GridItem key={id}>
               <Todo
-                id={todo.id}
-                text={todo.text}
+                id={id}
+                text={text}
                 counter={index + 1}
+                likes={likes}
                 // onClick={this.deleteTodo}
               />
             </GridItem>
